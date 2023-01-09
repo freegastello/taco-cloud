@@ -1,8 +1,8 @@
 package com.tacos.tacocloud.contrller;
 
-import com.tacos.tacocloud.entity.Ingredient;
-import com.tacos.tacocloud.entity.Taco;
-import com.tacos.tacocloud.entity.TacoOrder;
+import com.tacos.tacocloud.model.Ingredient;
+import com.tacos.tacocloud.model.Taco;
+import com.tacos.tacocloud.model.TacoOrder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +15,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static com.tacos.tacocloud.entity.Ingredient.Type;
+import static com.tacos.tacocloud.model.Ingredient.Type;
 
 @Slf4j
 @Controller
