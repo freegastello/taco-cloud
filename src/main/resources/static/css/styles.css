@@ -1,7 +1,11 @@
+.validationError {
+    color: red;
+}
+
 h1 {
     color: crimson;
 }
 
-.grid {
-    background-color: bisque;
-}
+/*.grid {*/
+/*    background-color: bisque;*/
+/*}*/
