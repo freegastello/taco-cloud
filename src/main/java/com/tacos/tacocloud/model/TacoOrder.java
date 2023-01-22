@@ -6,14 +6,22 @@ import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import org.hibernate.validator.constraints.CreditCardNumber;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
 import lombok.Data;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
 
 @Data
+@Table("Taco_Cloud_Order")
 public class TacoOrder implements Serializable {
+//    @Serial
+    private static final long serialVersionUID = 1L;
+    @Id
+    private Long id;
     @NotBlank(message="Delivery name is required")
     private String deliveryName;
     @NotBlank(message="Street is required")
@@ -32,8 +40,6 @@ public class TacoOrder implements Serializable {
     private String ccCVV;
     private List<Taco> tacos = new ArrayList<>();
 
-    private static final long serialVersionUID = 1L;
-    private Long id;
     private Date placedAt;
     public void addTaco(Taco taco) {
         this.tacos.add(taco);
