@@ -3,6 +3,8 @@ package com.tacos.tacocloud.controller;
 import com.tacos.tacocloud.dao.OrderRepository;
 import com.tacos.tacocloud.model.TacoOrder;
 import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
@@ -11,14 +13,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
-import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
 @RequestMapping("/orders")
 @SessionAttributes("tacoOrder")
 public class OrderController {
-    private OrderRepository orderRepo;
+    private final OrderRepository orderRepo;
 
     @Autowired
     public OrderController(OrderRepository orderRepo) {

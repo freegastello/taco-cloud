@@ -1,24 +1,19 @@
 package com.tacos.tacocloud.model;
 
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
 import org.hibernate.validator.constraints.CreditCardNumber;
 
-import java.io.Serial;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.ArrayList;
-import lombok.Data;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Table;
 
-@Data
-@Table("Taco_Cloud_Order")
+@Entity
+@Table
 public class TacoOrder implements Serializable {
-//    @Serial
     private static final long serialVersionUID = 1L;
     @Id
     private Long id;
@@ -38,10 +33,105 @@ public class TacoOrder implements Serializable {
     private String ccExpiration;
     @Digits(integer=3, fraction=0, message="Invalid CVV")
     private String ccCVV;
+    @ManyToMany
     private List<Taco> tacos = new ArrayList<>();
-
     private Date placedAt;
     public void addTaco(Taco taco) {
         this.tacos.add(taco);
+    }
+
+    public TacoOrder() {
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getDeliveryName() {
+        return deliveryName;
+    }
+
+    public void setDeliveryName(String deliveryName) {
+        this.deliveryName = deliveryName;
+    }
+
+    public String getDeliveryStreet() {
+        return deliveryStreet;
+    }
+
+    public void setDeliveryStreet(String deliveryStreet) {
+        this.deliveryStreet = deliveryStreet;
+    }
+
+    public String getDeliveryCity() {
+        return deliveryCity;
+    }
+
+    public void setDeliveryCity(String deliveryCity) {
+        this.deliveryCity = deliveryCity;
+    }
+
+    public String getDeliveryState() {
+        return deliveryState;
+    }
+
+    public void setDeliveryState(String deliveryState) {
+        this.deliveryState = deliveryState;
+    }
+
+    public String getDeliveryZip() {
+        return deliveryZip;
+    }
+
+    public void setDeliveryZip(String deliveryZip) {
+        this.deliveryZip = deliveryZip;
+    }
+
+    public String getCcNumber() {
+        return ccNumber;
+    }
+
+    public void setCcNumber(String ccNumber) {
+        this.ccNumber = ccNumber;
+    }
+
+    public String getCcExpiration() {
+        return ccExpiration;
+    }
+
+    public void setCcExpiration(String ccExpiration) {
+        this.ccExpiration = ccExpiration;
+    }
+
+    public String getCcCVV() {
+        return ccCVV;
+    }
+
+    public void setCcCVV(String ccCVV) {
+        this.ccCVV = ccCVV;
+    }
+
+    public List<Taco> getTacos() {
+        return tacos;
+    }
+
+    public void setTacos(List<Taco> tacos) {
+        this.tacos = tacos;
+    }
+
+    public Date getPlacedAt() {
+        return placedAt;
+    }
+
+    public void setPlacedAt(Date placedAt) {
+        this.placedAt = placedAt;
     }
 }
